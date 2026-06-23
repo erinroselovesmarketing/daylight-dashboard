@@ -1,6 +1,6 @@
 # Daylight Dashboard
 
-Daylight Dashboard is the reusable product/app for private daily companion pages.
+Daylight Dashboard is a family companion platform for private daily support pages that bring clarity, reassurance, memory support, and connection into confusing moments.
 
 The first loved-one page is:
 
@@ -29,7 +29,12 @@ mary
 - Shows Daylight Dashboard as the product homepage.
 - Opens Mary's Daily Companion directly when the domain is `MyDaughterLovesMe.com`.
 - Includes a simple PIN screen for the Mary page.
+- Uses Mary-safe language: calm, reassuring, non-clinical, and dignity-preserving.
 - Documents the domain setup for Vercel.
+
+## Product Direction
+
+See `PRODUCT_VISION.md` for the full brand direction, Mary-safe language rules, MVP priorities, future modules, and nonprofit vision.
 
 ## Important Privacy Note
 
