@@ -1,0 +1,10 @@
+{
+  "name": "daylight-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Private daily companion pages for loved ones and families.",
+  "scripts": {
+    "dev": "python3 -m http.server 4177",
+    "start": "python3 -m http.server 4177"
+  }
+}
