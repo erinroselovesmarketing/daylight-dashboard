@@ -4,14 +4,34 @@ const lovedOne = {
   giftDomain: "MyDaughterLovesMe.com",
   productDomain: "DaylightDashboard.com",
   pin: "mary",
+  locationLine: "You are home with Richard.",
   dailyNote:
-    "Good morning, Mom. This is your gentle place for the day: a little love, a little orientation, and a reminder that you are deeply cherished.",
+    "Everything important is okay today. Your family is helping, Richard is nearby, and you do not need to keep track of everything by yourself.",
   memory:
     "Today we are remembering the way you made ordinary days feel warm: coffee on, music playing, and everyone somehow feeling cared for.",
   focusItems: [
     "Drink some water and take your time.",
     "Look at one favorite photo or message.",
     "Let someone help with one small thing today.",
+  ],
+  handledItems: [
+    "The house is okay.",
+    "Groceries and daily needs are being watched over.",
+    "Your family knows how to reach you.",
+  ],
+  checkIns: [
+    "Erin checked in recently and loves you very much.",
+    "Richard is nearby and helping with today.",
+  ],
+  upcoming: [
+    "Family will keep you posted about plans.",
+    "You do not need to remember every detail right now.",
+  ],
+  trueThings: [
+    "You are safe.",
+    "You are loved.",
+    "You are not alone.",
+    "Your family is helping.",
   ],
 };
 
@@ -58,8 +78,8 @@ function renderProductHome() {
           <p class="eyebrow">For families caring across distance</p>
           <h1>Daylight Dashboard</h1>
           <p class="lead">
-            A private daily page for someone you love, built around reassurance,
-            memories, routines, photos, and simple next steps.
+            A family companion platform that brings clarity, calm, reassurance,
+            memories, and connection into confusing moments.
           </p>
           <div class="hero-actions">
             <a class="button" href="#mary">View Mary’s page</a>
@@ -89,7 +109,7 @@ function renderProductHome() {
       <div class="sections">
         <article class="section-panel">
           <h2>One page per loved one</h2>
-          <p>Each family can create a calm, personal daily companion page with its own tone, routines, and memories.</p>
+          <p>Each family can create a calm, personal daily page with the right tone, routines, photos, and reassurance.</p>
         </article>
         <article class="section-panel">
           <h2>Bring your own domain</h2>
@@ -97,7 +117,7 @@ function renderProductHome() {
         </article>
         <article class="section-panel">
           <h2>Built to grow gently</h2>
-          <p>This starts as a private gift and can grow into accounts, caregiver tools, photos, and secure family access.</p>
+          <p>This starts with Mary and grows from real use: family updates first, automation later.</p>
         </article>
       </div>
     </section>
@@ -120,8 +140,7 @@ function renderGate() {
         <h1>Made with love for ${lovedOne.name}</h1>
       </div>
       <p class="side-note">
-        This first version is a gentle private-feeling page. For real privacy,
-        the next build should use secure account login.
+        A calm place for today’s truth, simple reminders, and family love.
       </p>
     </aside>
     <section class="companion-main">
@@ -129,8 +148,7 @@ function renderGate() {
         <p class="eyebrow">Welcome</p>
         <h2>Enter Mary’s family PIN</h2>
         <p>
-          This keeps the page feeling tucked away while we finish the fuller
-          Daylight Dashboard account system.
+          This opens Mary’s private family page.
         </p>
         <div class="pin-row">
           <input id="pin" name="pin" type="password" autocomplete="current-password" placeholder="Family PIN" aria-label="Family PIN" />
@@ -169,22 +187,30 @@ function renderMaryPage() {
         <h1>Hello, ${lovedOne.name}</h1>
       </div>
       <p class="side-note">
-        A page from your daughter, made to bring comfort, reminders, and little sparks of joy.
+        A page from your daughter, made to bring comfort, reminders, and steady love.
       </p>
     </aside>
 
     <section class="companion-main">
       <div class="daily-layout">
         <header class="welcome-band">
-          <h2>Your companion for today</h2>
+          <h2>Good morning, ${lovedOne.name}</h2>
           <span class="date-pill">${todayLabel()}</span>
         </header>
 
         <div class="daily-grid">
           <article class="daily-card">
-            <p class="tiny-label">Morning note</p>
-            <h3>Start here</h3>
+            <p class="tiny-label">Today</p>
+            <h3>${lovedOne.locationLine}</h3>
             <p>${lovedOne.dailyNote}</p>
+          </article>
+
+          <article class="daily-card reassurance-card">
+            <p class="tiny-label">Things that are true</p>
+            <h3>You do not need to worry about this today</h3>
+            <ul>
+              ${lovedOne.trueThings.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
           </article>
 
           <article class="daily-card">
@@ -194,26 +220,40 @@ function renderMaryPage() {
           </article>
 
           <article class="daily-card">
-            <p class="tiny-label">Gentle reminders</p>
-            <h3>Three small things</h3>
+            <p class="tiny-label">Already handled</p>
+            <h3>This is taken care of</h3>
+            <ul>
+              ${lovedOne.handledItems.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+          </article>
+
+          <article class="daily-card">
+            <p class="tiny-label">Family check-ins</p>
+            <h3>Who has checked in recently</h3>
+            <ul>
+              ${lovedOne.checkIns.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+          </article>
+
+          <article class="daily-card">
+            <p class="tiny-label">Simple plan</p>
+            <h3>Three gentle things</h3>
             <ul>
               ${lovedOne.focusItems.map((item) => `<li>${item}</li>`).join("")}
             </ul>
           </article>
 
           <article class="daily-card">
-            <p class="tiny-label">Family message</p>
-            <h3>You are loved</h3>
-            <p>
-              This page exists because you matter. Someone who loves you wanted
-              you to have a place that feels steady, familiar, and yours.
-            </p>
+            <p class="tiny-label">Coming up</p>
+            <h3>What is next</h3>
+            <ul>
+              ${lovedOne.upcoming.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
           </article>
         </div>
 
         <p class="footer-note">
-          Prototype note: this page is ready for Vercel as a first gift version.
-          The next version should move Mary’s content and access controls into a secure backend.
+          Your family loves you. Everything important is okay today.
         </p>
       </div>
     </section>
