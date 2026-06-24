@@ -1,4 +1,4 @@
-const lovedOne = {
+const defaultLovedOne = {
   name: "Mary",
   pageName: "Mary's Daily Companion",
   giftDomain: "MyDaughterLovesMe.com",
@@ -36,6 +36,58 @@ const lovedOne = {
 };
 
 const app = document.querySelector("#app");
+const storageKey = "daylight-dashboard-mary";
+let lovedOne = loadLovedOne();
+
+function cloneDefaultContent() {
+  return JSON.parse(JSON.stringify(defaultLovedOne));
+}
+
+function loadLovedOne() {
+  try {
+    const saved = window.localStorage.getItem(storageKey);
+    if (!saved) {
+      return cloneDefaultContent();
+    }
+    return { ...cloneDefaultContent(), ...JSON.parse(saved) };
+  } catch {
+    return cloneDefaultContent();
+  }
+}
+
+function saveLovedOne(nextContent) {
+  lovedOne = { ...cloneDefaultContent(), ...nextContent };
+  window.localStorage.setItem(storageKey, JSON.stringify(lovedOne));
+}
+
+function resetLovedOne() {
+  lovedOne = cloneDefaultContent();
+  window.localStorage.removeItem(storageKey);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderList(items) {
+  return items.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+}
+
+function listToTextarea(items) {
+  return items.join("\n");
+}
+
+function textareaToList(value) {
+  return value
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
 
 function isGiftDomain() {
   const host = window.location.hostname.toLowerCase();
@@ -62,6 +114,7 @@ function renderTopbar() {
       </a>
       <nav class="top-actions" aria-label="Primary">
         <a class="button secondary" href="#mary">Mary demo</a>
+        <a class="button secondary" href="#admin">Admin</a>
         <a class="button" href="mailto:hello@daylightdashboard.com">Start setup</a>
       </nav>
     </header>
@@ -113,7 +166,7 @@ function renderProductHome() {
         </article>
         <article class="section-panel">
           <h2>Bring your own domain</h2>
-          <p>A family-owned URL can point straight to the loved one’s page, like ${lovedOne.giftDomain} for ${lovedOne.name}.</p>
+          <p>A family-owned URL can point straight to the loved one’s page, like ${escapeHtml(lovedOne.giftDomain)} for ${escapeHtml(lovedOne.name)}.</p>
         </article>
         <article class="section-panel">
           <h2>Built to grow gently</h2>
@@ -132,12 +185,12 @@ function renderGate() {
         <span class="mark">M</span>
         <span class="brand-text">
           <strong>${lovedOne.pageName}</strong>
-          <span>${lovedOne.giftDomain}</span>
+          <span>${escapeHtml(lovedOne.giftDomain)}</span>
         </span>
       </div>
       <div>
         <p class="eyebrow">A private family gift</p>
-        <h1>Made with love for ${lovedOne.name}</h1>
+        <h1>Made with love for ${escapeHtml(lovedOne.name)}</h1>
       </div>
       <p class="side-note">
         A calm place for today’s truth, simple reminders, and family love.
@@ -184,7 +237,7 @@ function renderMaryPage() {
       </div>
       <div>
         <p class="eyebrow">Today’s light</p>
-        <h1>Hello, ${lovedOne.name}</h1>
+        <h1>Hello, ${escapeHtml(lovedOne.name)}</h1>
       </div>
       <p class="side-note">
         A page from your daughter, made to bring comfort, reminders, and steady love.
@@ -194,36 +247,36 @@ function renderMaryPage() {
     <section class="companion-main">
       <div class="daily-layout">
         <header class="welcome-band">
-          <h2>Good morning, ${lovedOne.name}</h2>
+          <h2>Good morning, ${escapeHtml(lovedOne.name)}</h2>
           <span class="date-pill">${todayLabel()}</span>
         </header>
 
         <div class="daily-grid">
           <article class="daily-card">
             <p class="tiny-label">Today</p>
-            <h3>${lovedOne.locationLine}</h3>
-            <p>${lovedOne.dailyNote}</p>
+            <h3>${escapeHtml(lovedOne.locationLine)}</h3>
+            <p>${escapeHtml(lovedOne.dailyNote)}</p>
           </article>
 
           <article class="daily-card reassurance-card">
             <p class="tiny-label">Things that are true</p>
             <h3>You do not need to worry about this today</h3>
             <ul>
-              ${lovedOne.trueThings.map((item) => `<li>${item}</li>`).join("")}
+              ${renderList(lovedOne.trueThings)}
             </ul>
           </article>
 
           <article class="daily-card">
             <p class="tiny-label">Memory</p>
             <div class="memory-photo" role="img" aria-label="Warm abstract sunlight memory image"></div>
-            <p>${lovedOne.memory}</p>
+            <p>${escapeHtml(lovedOne.memory)}</p>
           </article>
 
           <article class="daily-card">
             <p class="tiny-label">Already handled</p>
             <h3>This is taken care of</h3>
             <ul>
-              ${lovedOne.handledItems.map((item) => `<li>${item}</li>`).join("")}
+              ${renderList(lovedOne.handledItems)}
             </ul>
           </article>
 
@@ -231,7 +284,7 @@ function renderMaryPage() {
             <p class="tiny-label">Family check-ins</p>
             <h3>Who has checked in recently</h3>
             <ul>
-              ${lovedOne.checkIns.map((item) => `<li>${item}</li>`).join("")}
+              ${renderList(lovedOne.checkIns)}
             </ul>
           </article>
 
@@ -239,7 +292,7 @@ function renderMaryPage() {
             <p class="tiny-label">Simple plan</p>
             <h3>Three gentle things</h3>
             <ul>
-              ${lovedOne.focusItems.map((item) => `<li>${item}</li>`).join("")}
+              ${renderList(lovedOne.focusItems)}
             </ul>
           </article>
 
@@ -247,7 +300,7 @@ function renderMaryPage() {
             <p class="tiny-label">Coming up</p>
             <h3>What is next</h3>
             <ul>
-              ${lovedOne.upcoming.map((item) => `<li>${item}</li>`).join("")}
+              ${renderList(lovedOne.upcoming)}
             </ul>
           </article>
         </div>
@@ -260,7 +313,126 @@ function renderMaryPage() {
   `;
 }
 
+function renderAdminGate() {
+  app.className = "app-shell";
+  app.innerHTML = `
+    ${renderTopbar()}
+    <section class="admin-page">
+      <form class="private-gate admin-gate" id="admin-pin-form">
+        <p class="eyebrow">Family admin</p>
+        <h1>Update Mary’s page</h1>
+        <p>
+          Enter the family PIN to edit today’s calm, Mary-safe dashboard content.
+        </p>
+        <div class="pin-row">
+          <input id="admin-pin" name="pin" type="password" autocomplete="current-password" placeholder="Family PIN" aria-label="Family PIN" />
+          <button class="button" type="submit">Open admin</button>
+        </div>
+        <p class="error" id="admin-pin-error" hidden>That PIN did not open admin.</p>
+      </form>
+    </section>
+  `;
+
+  document.querySelector("#admin-pin-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const pin = document.querySelector("#admin-pin").value.trim().toLowerCase();
+    if (pin === lovedOne.pin) {
+      window.sessionStorage.setItem("daylight-admin-open", "yes");
+      renderAdminPage();
+      return;
+    }
+    document.querySelector("#admin-pin-error").hidden = false;
+  });
+}
+
+function renderAdminPage(saved = false) {
+  app.className = "app-shell";
+  app.innerHTML = `
+    ${renderTopbar()}
+    <section class="admin-page">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Family admin</p>
+          <h1>Mary’s daily content</h1>
+          <p class="lead">
+            Keep language warm, simple, and reassuring. Mary’s view should feel like help, not monitoring.
+          </p>
+        </div>
+        <a class="button secondary" href="#mary">View Mary’s page</a>
+      </header>
+
+      <form class="admin-form" id="admin-form">
+        ${renderTextInput("name", "Loved one name", lovedOne.name)}
+        ${renderTextInput("locationLine", "Where Mary is", lovedOne.locationLine)}
+        ${renderTextarea("dailyNote", "Daily reassurance", lovedOne.dailyNote)}
+        ${renderTextarea("trueThings", "Things that are true", listToTextarea(lovedOne.trueThings), true)}
+        ${renderTextarea("handledItems", "Already handled", listToTextarea(lovedOne.handledItems), true)}
+        ${renderTextarea("checkIns", "Family check-ins", listToTextarea(lovedOne.checkIns), true)}
+        ${renderTextarea("focusItems", "Simple plan", listToTextarea(lovedOne.focusItems), true)}
+        ${renderTextarea("upcoming", "Coming up", listToTextarea(lovedOne.upcoming), true)}
+        ${renderTextarea("memory", "Memory", lovedOne.memory)}
+
+        <div class="admin-actions">
+          <button class="button" type="submit">Save updates</button>
+          <button class="button secondary" type="button" id="reset-content">Reset defaults</button>
+          ${saved ? `<span class="save-note">Saved. Mary’s page is updated in this browser.</span>` : ""}
+        </div>
+      </form>
+    </section>
+  `;
+
+  document.querySelector("#admin-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    saveLovedOne({
+      name: form.get("name").trim() || defaultLovedOne.name,
+      locationLine: form.get("locationLine").trim() || defaultLovedOne.locationLine,
+      dailyNote: form.get("dailyNote").trim() || defaultLovedOne.dailyNote,
+      memory: form.get("memory").trim() || defaultLovedOne.memory,
+      trueThings: textareaToList(form.get("trueThings")),
+      handledItems: textareaToList(form.get("handledItems")),
+      checkIns: textareaToList(form.get("checkIns")),
+      focusItems: textareaToList(form.get("focusItems")),
+      upcoming: textareaToList(form.get("upcoming")),
+    });
+    renderAdminPage(true);
+  });
+
+  document.querySelector("#reset-content").addEventListener("click", () => {
+    resetLovedOne();
+    renderAdminPage(true);
+  });
+}
+
+function renderTextInput(name, label, value) {
+  return `
+    <label class="field">
+      <span>${label}</span>
+      <input name="${name}" value="${escapeHtml(value)}" />
+    </label>
+  `;
+}
+
+function renderTextarea(name, label, value, isList = false) {
+  return `
+    <label class="field">
+      <span>${label}${isList ? " <small>one per line</small>" : ""}</span>
+      <textarea name="${name}" rows="${isList ? 4 : 5}">${escapeHtml(value)}</textarea>
+    </label>
+  `;
+}
+
 function route() {
+  if (window.location.hash === "#admin") {
+    const isOpen = window.sessionStorage.getItem("daylight-admin-open") === "yes";
+    if (isOpen) {
+      renderAdminPage();
+    } else {
+      renderAdminGate();
+    }
+    return;
+  }
+
   if (isGiftDomain()) {
     const isOpen = window.sessionStorage.getItem("daylight-mary-open") === "yes";
     if (isOpen) {
