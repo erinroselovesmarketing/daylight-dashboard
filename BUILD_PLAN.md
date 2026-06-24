@@ -112,7 +112,8 @@ Tasks:
 - Store editable content in browser storage for the prototype. `Done in prototype`
 - Add reset-to-defaults option. `Done in prototype`
 - Add Mary-safe admin guidance.
-- Improve Mary page layout for large text.
+- Add comfort/reassurance mode. `Done in prototype`
+- Improve Mary page layout for large text. `In progress`
 - Verify mobile/tablet/desktop.
 - Deploy to Vercel.
 - Connect `MyDaughterLovesMe.com`.
