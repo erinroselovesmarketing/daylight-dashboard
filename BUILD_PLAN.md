@@ -118,7 +118,8 @@ Tasks:
 - Add recent conversations. `Done in prototype`
 - Add special dates/countdowns. `Done in prototype`
 - Improve Mary page layout for large text. `Done in prototype`
-- Verify mobile/tablet/desktop.
+- Add mobile/tablet/desktop verification checklist. `Done in prototype`
+- Run final visual mobile/tablet/desktop pass.
 - Deploy to Vercel.
 - Connect `MyDaughterLovesMe.com`.
 
