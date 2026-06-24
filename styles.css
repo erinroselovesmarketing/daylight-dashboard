@@ -29,6 +29,7 @@ body {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+  text-size-adjust: 100%;
 }
 
 button,
@@ -394,14 +395,16 @@ h1 {
 }
 
 .daily-card h3 {
-  font-size: 1.05rem;
+  font-size: clamp(1.18rem, 2vw, 1.35rem);
+  line-height: 1.18;
   margin-bottom: 12px;
 }
 
 .daily-card p,
 .daily-card li {
   color: #4f4943;
-  line-height: 1.58;
+  font-size: clamp(1.05rem, 1.6vw, 1.18rem);
+  line-height: 1.62;
 }
 
 .daily-card ul {
@@ -601,16 +604,29 @@ h1 {
   }
 
   .companion-side {
-    min-height: 360px;
+    gap: 24px;
+    min-height: auto;
   }
 
   .welcome-band {
     align-items: start;
     flex-direction: column;
   }
+
+  .companion-main {
+    padding-top: 22px;
+  }
+
+  .daily-layout {
+    gap: 16px;
+  }
 }
 
 @media (max-width: 560px) {
+  body {
+    background: var(--paper);
+  }
+
   .topbar {
     align-items: flex-start;
     flex-direction: column;
@@ -628,5 +644,61 @@ h1 {
 
   .pin-row {
     flex-direction: column;
+  }
+
+  .companion-side {
+    padding: 20px;
+  }
+
+  .companion-side .brand-text span,
+  .side-note {
+    font-size: 0.88rem;
+  }
+
+  .companion-side h1 {
+    font-size: 2rem;
+    max-width: none;
+  }
+
+  .companion-main {
+    padding: 16px;
+  }
+
+  .welcome-band h2 {
+    font-size: 2.35rem;
+    line-height: 1;
+  }
+
+  .date-pill {
+    border-radius: 8px;
+    text-align: center;
+    white-space: normal;
+    width: 100%;
+  }
+
+  .daily-card {
+    padding: 18px;
+  }
+
+  .daily-card p,
+  .daily-card li {
+    font-size: 1.08rem;
+  }
+
+  .daily-card ul {
+    padding-left: 20px;
+  }
+
+  .tiny-label {
+    font-size: 0.74rem;
+  }
+
+  .comfort-panel h1 {
+    font-size: 3rem;
+    max-width: none;
+  }
+
+  .comfort-message {
+    font-size: 1.45rem;
   }
 }
