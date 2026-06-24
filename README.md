@@ -43,6 +43,10 @@ mary
 
 See `PRODUCT_VISION.md` for the full brand direction, Mary-safe language rules, MVP priorities, future modules, and nonprofit vision.
 
+## Deployment
+
+See `DEPLOYMENT.md` for Vercel import settings, domain setup, current limitations, and the next production upgrade.
+
 ## Important Privacy Note
 
 This first version is a static prototype. The PIN is appropriate for a private-feeling gift page, but it is not strong security because the page runs fully in the browser.
