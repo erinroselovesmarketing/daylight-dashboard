@@ -33,6 +33,8 @@ const defaultLovedOne = {
     "You are not alone.",
     "Your family is helping.",
   ],
+  comfortMessage:
+    "Take a slow breath. You are safe at home. Richard is nearby, Erin loves you, and everything important is okay today.",
 };
 
 const app = document.querySelector("#app");
@@ -242,6 +244,7 @@ function renderMaryPage() {
       <p class="side-note">
         A page from your daughter, made to bring comfort, reminders, and steady love.
       </p>
+      <a class="button comfort-link" href="#comfort">Comfort mode</a>
     </aside>
 
     <section class="companion-main">
@@ -366,6 +369,7 @@ function renderAdminPage(saved = false) {
         ${renderTextInput("locationLine", "Where Mary is", lovedOne.locationLine)}
         ${renderTextarea("dailyNote", "Daily reassurance", lovedOne.dailyNote)}
         ${renderTextarea("trueThings", "Things that are true", listToTextarea(lovedOne.trueThings), true)}
+        ${renderTextarea("comfortMessage", "Comfort mode message", lovedOne.comfortMessage)}
         ${renderTextarea("handledItems", "Already handled", listToTextarea(lovedOne.handledItems), true)}
         ${renderTextarea("checkIns", "Family check-ins", listToTextarea(lovedOne.checkIns), true)}
         ${renderTextarea("focusItems", "Simple plan", listToTextarea(lovedOne.focusItems), true)}
@@ -389,6 +393,7 @@ function renderAdminPage(saved = false) {
       locationLine: form.get("locationLine").trim() || defaultLovedOne.locationLine,
       dailyNote: form.get("dailyNote").trim() || defaultLovedOne.dailyNote,
       memory: form.get("memory").trim() || defaultLovedOne.memory,
+      comfortMessage: form.get("comfortMessage").trim() || defaultLovedOne.comfortMessage,
       trueThings: textareaToList(form.get("trueThings")),
       handledItems: textareaToList(form.get("handledItems")),
       checkIns: textareaToList(form.get("checkIns")),
@@ -422,6 +427,27 @@ function renderTextarea(name, label, value, isList = false) {
   `;
 }
 
+function renderComfortMode() {
+  app.className = "comfort-mode";
+  app.innerHTML = `
+    <section class="comfort-panel">
+      <p class="eyebrow">Comfort mode</p>
+      <h1>You are safe, ${escapeHtml(lovedOne.name)}</h1>
+      <p class="comfort-date">${todayLabel()}</p>
+      <p class="comfort-message">${escapeHtml(lovedOne.comfortMessage)}</p>
+
+      <div class="comfort-truths">
+        ${lovedOne.trueThings.map((item) => `<p>${escapeHtml(item)}</p>`).join("")}
+      </div>
+
+      <div class="comfort-actions">
+        <a class="button" href="#mary">Back to today</a>
+        <a class="button secondary" href="#admin">Update message</a>
+      </div>
+    </section>
+  `;
+}
+
 function route() {
   if (window.location.hash === "#admin") {
     const isOpen = window.sessionStorage.getItem("daylight-admin-open") === "yes";
@@ -430,6 +456,11 @@ function route() {
     } else {
       renderAdminGate();
     }
+    return;
+  }
+
+  if (window.location.hash === "#comfort") {
+    renderComfortMode();
     return;
   }
 
