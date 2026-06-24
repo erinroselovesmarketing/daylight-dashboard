@@ -47,6 +47,16 @@ See `PRODUCT_VISION.md` for the full brand direction, Mary-safe language rules, 
 
 See `DEPLOYMENT.md` for Vercel import settings, domain setup, current limitations, and the next production upgrade.
 
+## Verification
+
+See `VERIFICATION.md` for the desktop, phone, tablet, Mary-safe content, and domain checks to run before gifting or sharing the page.
+
+For a quick JavaScript sanity check, run:
+
+```sh
+npm run check
+```
+
 ## Important Privacy Note
 
 This first version is a static prototype. The PIN is appropriate for a private-feeling gift page, but it is not strong security because the page runs fully in the browser.
