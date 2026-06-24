@@ -117,7 +117,7 @@ Tasks:
 - Add where-things-are section. `Done in prototype`
 - Add recent conversations. `Done in prototype`
 - Add special dates/countdowns. `Done in prototype`
-- Improve Mary page layout for large text. `In progress`
+- Improve Mary page layout for large text. `Done in prototype`
 - Verify mobile/tablet/desktop.
 - Deploy to Vercel.
 - Connect `MyDaughterLovesMe.com`.
