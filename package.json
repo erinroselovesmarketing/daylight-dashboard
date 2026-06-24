@@ -4,6 +4,8 @@
   "private": true,
   "description": "Private daily companion pages for loved ones and families.",
   "scripts": {
+    "check": "node --check app.js",
+    "build": "npm run check",
     "dev": "python3 -m http.server 4177",
     "start": "python3 -m http.server 4177"
   }
