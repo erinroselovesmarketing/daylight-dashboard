@@ -113,6 +113,8 @@ Tasks:
 - Add reset-to-defaults option. `Done in prototype`
 - Add Mary-safe admin guidance.
 - Add comfort/reassurance mode. `Done in prototype`
+- Add home/grocery snapshot. `Done in prototype`
+- Add where-things-are section. `Done in prototype`
 - Improve Mary page layout for large text. `In progress`
 - Verify mobile/tablet/desktop.
 - Deploy to Vercel.
