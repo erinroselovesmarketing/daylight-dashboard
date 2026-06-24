@@ -434,6 +434,79 @@ h1 {
   line-height: 1.5;
 }
 
+.comfort-link {
+  margin-top: 22px;
+}
+
+.comfort-mode {
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(216, 236, 243, 0.88), rgba(255, 250, 242, 0.96)),
+    var(--paper);
+  display: grid;
+  min-height: 100vh;
+  padding: clamp(20px, 5vw, 64px);
+}
+
+.comfort-panel {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(39, 35, 31, 0.1);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 22px;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: clamp(26px, 6vw, 72px);
+}
+
+.comfort-panel h1 {
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  line-height: 0.95;
+  max-width: 11ch;
+}
+
+.comfort-date {
+  background: var(--sun);
+  border-radius: 999px;
+  color: #5a3b0c;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  justify-self: start;
+  margin: 0;
+  padding: 10px 16px;
+}
+
+.comfort-message {
+  color: #3d3833;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.28;
+  margin: 0;
+}
+
+.comfort-truths {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.comfort-truths p {
+  background: rgba(82, 121, 111, 0.12);
+  border: 1px solid rgba(82, 121, 111, 0.16);
+  border-radius: 8px;
+  color: #2f4e47;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 850;
+  margin: 0;
+  padding: 14px 16px;
+}
+
+.comfort-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .admin-page {
   display: grid;
   gap: 24px;
@@ -517,7 +590,8 @@ h1 {
   .companion,
   .daily-grid,
   .sections,
-  .admin-form {
+  .admin-form,
+  .comfort-truths {
     grid-template-columns: 1fr;
   }
 
