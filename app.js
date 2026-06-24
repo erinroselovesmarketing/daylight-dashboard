@@ -23,9 +23,17 @@ const defaultLovedOne = {
     "Erin checked in recently and loves you very much.",
     "Richard is nearby and helping with today.",
   ],
+  recentConversations: [
+    "Erin checked in and wanted you to know she loves you.",
+    "Family is thinking about you and keeping in touch.",
+  ],
   upcoming: [
     "Family will keep you posted about plans.",
     "You do not need to remember every detail right now.",
+  ],
+  specialDates: [
+    "The next family plans will be shared with you gently.",
+    "Birthdays, holidays, and visits are being watched over by family.",
   ],
   homeSnapshot: [
     "There is food in the house.",
@@ -302,6 +310,14 @@ function renderMaryPage() {
           </article>
 
           <article class="daily-card">
+            <p class="tiny-label">Recent conversations</p>
+            <h3>Who you have heard from</h3>
+            <ul>
+              ${renderList(lovedOne.recentConversations)}
+            </ul>
+          </article>
+
+          <article class="daily-card">
             <p class="tiny-label">Simple plan</p>
             <h3>Three gentle things</h3>
             <ul>
@@ -314,6 +330,14 @@ function renderMaryPage() {
             <h3>What is next</h3>
             <ul>
               ${renderList(lovedOne.upcoming)}
+            </ul>
+          </article>
+
+          <article class="daily-card">
+            <p class="tiny-label">Special dates</p>
+            <h3>Things family is watching</h3>
+            <ul>
+              ${renderList(lovedOne.specialDates)}
             </ul>
           </article>
 
@@ -398,8 +422,10 @@ function renderAdminPage(saved = false) {
         ${renderTextarea("comfortMessage", "Comfort mode message", lovedOne.comfortMessage)}
         ${renderTextarea("handledItems", "Already handled", listToTextarea(lovedOne.handledItems), true)}
         ${renderTextarea("checkIns", "Family check-ins", listToTextarea(lovedOne.checkIns), true)}
+        ${renderTextarea("recentConversations", "Recent conversations", listToTextarea(lovedOne.recentConversations), true)}
         ${renderTextarea("focusItems", "Simple plan", listToTextarea(lovedOne.focusItems), true)}
         ${renderTextarea("upcoming", "Coming up", listToTextarea(lovedOne.upcoming), true)}
+        ${renderTextarea("specialDates", "Special dates / countdowns", listToTextarea(lovedOne.specialDates), true)}
         ${renderTextarea("homeSnapshot", "Home / grocery snapshot", listToTextarea(lovedOne.homeSnapshot), true)}
         ${renderTextarea("whereThingsAre", "Where things are", listToTextarea(lovedOne.whereThingsAre), true)}
         ${renderTextarea("memory", "Memory", lovedOne.memory)}
@@ -425,8 +451,10 @@ function renderAdminPage(saved = false) {
       trueThings: textareaToList(form.get("trueThings")),
       handledItems: textareaToList(form.get("handledItems")),
       checkIns: textareaToList(form.get("checkIns")),
+      recentConversations: textareaToList(form.get("recentConversations")),
       focusItems: textareaToList(form.get("focusItems")),
       upcoming: textareaToList(form.get("upcoming")),
+      specialDates: textareaToList(form.get("specialDates")),
       homeSnapshot: textareaToList(form.get("homeSnapshot")),
       whereThingsAre: textareaToList(form.get("whereThingsAre")),
     });
