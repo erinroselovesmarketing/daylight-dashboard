@@ -27,6 +27,16 @@ const defaultLovedOne = {
     "Family will keep you posted about plans.",
     "You do not need to remember every detail right now.",
   ],
+  homeSnapshot: [
+    "There is food in the house.",
+    "Richard and family are helping keep an eye on what is needed.",
+    "You do not need to solve groceries by yourself today.",
+  ],
+  whereThingsAre: [
+    "Your phone is the best place to check for family messages.",
+    "Important household things are being watched over by family.",
+    "If something feels hard to find, it is okay to ask Richard or Erin.",
+  ],
   trueThings: [
     "You are safe.",
     "You are loved.",
@@ -306,6 +316,22 @@ function renderMaryPage() {
               ${renderList(lovedOne.upcoming)}
             </ul>
           </article>
+
+          <article class="daily-card">
+            <p class="tiny-label">Home snapshot</p>
+            <h3>What is okay at home</h3>
+            <ul>
+              ${renderList(lovedOne.homeSnapshot)}
+            </ul>
+          </article>
+
+          <article class="daily-card">
+            <p class="tiny-label">Where things are</p>
+            <h3>Helpful places</h3>
+            <ul>
+              ${renderList(lovedOne.whereThingsAre)}
+            </ul>
+          </article>
         </div>
 
         <p class="footer-note">
@@ -374,6 +400,8 @@ function renderAdminPage(saved = false) {
         ${renderTextarea("checkIns", "Family check-ins", listToTextarea(lovedOne.checkIns), true)}
         ${renderTextarea("focusItems", "Simple plan", listToTextarea(lovedOne.focusItems), true)}
         ${renderTextarea("upcoming", "Coming up", listToTextarea(lovedOne.upcoming), true)}
+        ${renderTextarea("homeSnapshot", "Home / grocery snapshot", listToTextarea(lovedOne.homeSnapshot), true)}
+        ${renderTextarea("whereThingsAre", "Where things are", listToTextarea(lovedOne.whereThingsAre), true)}
         ${renderTextarea("memory", "Memory", lovedOne.memory)}
 
         <div class="admin-actions">
@@ -399,6 +427,8 @@ function renderAdminPage(saved = false) {
       checkIns: textareaToList(form.get("checkIns")),
       focusItems: textareaToList(form.get("focusItems")),
       upcoming: textareaToList(form.get("upcoming")),
+      homeSnapshot: textareaToList(form.get("homeSnapshot")),
+      whereThingsAre: textareaToList(form.get("whereThingsAre")),
     });
     renderAdminPage(true);
   });
