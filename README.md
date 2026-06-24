@@ -18,6 +18,12 @@ For the Mary page demo, open:
 index.html#mary
 ```
 
+For the family admin demo, open:
+
+```txt
+index.html#admin
+```
+
 Temporary demo PIN:
 
 ```txt
@@ -29,6 +35,7 @@ mary
 - Shows Daylight Dashboard as the product homepage.
 - Opens Mary's Daily Companion directly when the domain is `MyDaughterLovesMe.com`.
 - Includes a simple PIN screen for the Mary page.
+- Includes a prototype family admin screen for updating Mary’s daily content.
 - Uses Mary-safe language: calm, reassuring, non-clinical, and dignity-preserving.
 - Documents the domain setup for Vercel.
 
@@ -39,6 +46,8 @@ See `PRODUCT_VISION.md` for the full brand direction, Mary-safe language rules, 
 ## Important Privacy Note
 
 This first version is a static prototype. The PIN is appropriate for a private-feeling gift page, but it is not strong security because the page runs fully in the browser.
+
+The admin screen currently stores updates in the browser on that device. It is useful for prototyping content, but it is not yet a shared family database.
 
 Before adding sensitive medical, financial, or deeply personal family information, add real account login and server-side access control.
 
