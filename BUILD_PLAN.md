@@ -120,9 +120,10 @@ Tasks:
 - Improve Mary page layout for large text. `Done in prototype`
 - Add mobile/tablet/desktop verification checklist. `Done in prototype`
 - Run final visual mobile/tablet/desktop pass.
-- Confirm Vercel import status. `Done: project not imported yet`
-- Deploy to Vercel.
-- Connect `MyDaughterLovesMe.com`.
+- Confirm Vercel import status. `Done: project created and GitHub connected`
+- Deploy to Vercel. `Done`
+- Connect `MyDaughterLovesMe.com`. `Done: valid in Vercel`
+- Connect `DaylightDashboard.com`. `In progress: DNS change needed at GoDaddy`
 
 ### Milestone 2: Private Launch
 
