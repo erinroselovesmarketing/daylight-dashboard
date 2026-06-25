@@ -43,9 +43,18 @@ clearly-desk-marketing-site
 
 `daylight-dashboard` has not been imported into Vercel yet.
 
-The connected Vercel tool for this Codex environment does not create the project directly; it points to the Vercel CLI. This laptop environment does not currently have the `vercel` CLI available, so the clean next step is to import the GitHub repo from the Vercel dashboard.
+The connected Vercel tool for this Codex environment does not create the project directly; it points to the Vercel CLI. The Vercel CLI can run from temporary Codex storage, but it requires a Vercel login approval before it can create or deploy this project.
+
+Last attempted CLI login:
+
+```txt
+Status: reached Vercel device-login approval
+Next needed: approve a fresh Vercel CLI login code
+```
 
 ## Exact Import Steps
+
+Dashboard import remains the simplest path if CLI login is inconvenient.
 
 1. Open Vercel.
 2. Make sure the selected team is `Influence Results`.
