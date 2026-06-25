@@ -123,7 +123,7 @@ Tasks:
 - Confirm Vercel import status. `Done: project created and GitHub connected`
 - Deploy to Vercel. `Done`
 - Connect `MyDaughterLovesMe.com`. `Done: valid in Vercel`
-- Connect `DaylightDashboard.com`. `In progress: DNS change needed at GoDaddy`
+- Connect `DaylightDashboard.com`. `Done: DNS records corrected; propagation/certificate settling`
 
 ### Milestone 2: Private Launch
 
