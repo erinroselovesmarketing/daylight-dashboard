@@ -80,8 +80,8 @@ www.mydaughterlovesme.com
 Current domain status:
 
 ```txt
-daylightdashboard.com        Added, DNS invalid at GoDaddy
-www.daylightdashboard.com    Added, DNS invalid at GoDaddy
+daylightdashboard.com        Added, DNS records corrected at GoDaddy; HTTPS/local cache still propagating
+www.daylightdashboard.com    Added, DNS records corrected at GoDaddy; verified against Vercel edge while local cache propagates
 mydaughterlovesme.com        Added, valid in Vercel; HTTP works; HTTPS certificate still propagating
 www.mydaughterlovesme.com    Added, valid in Vercel; HTTPS certificate still propagating
 ```
