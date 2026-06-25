@@ -39,44 +39,32 @@ Projects currently visible in that team:
 ```txt
 my-real-estate-marketing-site
 clearly-desk-marketing-site
+daylight-dashboard
 ```
 
-`daylight-dashboard` has not been imported into Vercel yet.
-
-The connected Vercel tool for this Codex environment does not create the project directly; it points to the Vercel CLI. The Vercel CLI can run from temporary Codex storage, but it requires a Vercel login approval before it can create or deploy this project.
+`daylight-dashboard` is now created in Vercel and connected to GitHub.
 
 Last attempted CLI login:
 
 ```txt
-Status: reached Vercel device-login approval
-Next needed: approve a fresh Vercel CLI login code
+Status: Vercel CLI login succeeded
 ```
 
-## Exact Import Steps
-
-Dashboard import remains the simplest path if CLI login is inconvenient.
-
-1. Open Vercel.
-2. Make sure the selected team is `Influence Results`.
-3. Choose `Add New` then `Project`.
-4. Import the GitHub repo:
+Production URL:
 
 ```txt
-erinroselovesmarketing/daylight-dashboard
+https://daylight-dashboard-orpin.vercel.app
 ```
 
-5. Use these settings:
+## Import Status
+
+The project was created through Vercel CLI and connected to GitHub:
 
 ```txt
-Framework preset: Other
-Root directory: ./
-Build command: leave empty
-Output directory: leave empty
-Install command: leave empty
+Project: daylight-dashboard
+Team: Influence Results
+GitHub repo: erinroselovesmarketing/daylight-dashboard
 ```
-
-6. Deploy.
-7. Copy the Vercel production URL into this file once it exists.
 
 ## Domains To Add In Vercel
 
@@ -89,13 +77,30 @@ mydaughterlovesme.com
 www.mydaughterlovesme.com
 ```
 
+Current domain status:
+
+```txt
+daylightdashboard.com        Added, DNS invalid at GoDaddy
+www.daylightdashboard.com    Added, DNS invalid at GoDaddy
+mydaughterlovesme.com        Added, valid in Vercel; HTTP works; HTTPS certificate still propagating
+www.mydaughterlovesme.com    Added, valid in Vercel; HTTPS certificate still propagating
+```
+
 ## GoDaddy DNS Records
 
-For each domain, use:
+For `MyDaughterLovesMe.com`, the current GoDaddy records are valid:
 
 ```txt
 A      @      76.76.21.21
 CNAME  www    cname.vercel-dns.com
+```
+
+For `DaylightDashboard.com`, Vercel currently recommends updating GoDaddy DNS to:
+
+```txt
+A      @      216.198.79.1
+A      @      64.29.17.1
+CNAME  www    22072dfed8b0418c.vercel-dns-017.com
 ```
 
 Do not change MX/email records.
@@ -125,7 +130,9 @@ mary
 
 ## Deployment URL
 
-Not created yet.
+```txt
+https://daylight-dashboard-orpin.vercel.app
+```
 
 ## Known Limitations
 
